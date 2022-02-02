@@ -18,8 +18,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="#">Naves</a>
-        <a class="nav-link" href="#">Pilotos</a>
+        <a class="nav-link" href="{{route('naves')}}">Naves</a>
+        <a class="nav-link" href="{{route('piloto.index')}}">Pilotos</a>
       </div>
     </div>
   </div>

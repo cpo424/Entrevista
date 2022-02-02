@@ -91,11 +91,14 @@ class pilotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($piloto)
+    public function destroy($id)
     {
         $piloto=piloto::find($id);
+        $piloto->naves()->each(function($nave){
+            $nave->delete();
+        });
         $piloto->delete();
 
-        return redirect()->route('pilotos')->with('success','Piloto eliminado correctamente');
+        return redirect()->route('piloto.index')->with('success','Piloto eliminado correctamente');
     }
 }

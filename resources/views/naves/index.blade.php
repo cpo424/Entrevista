@@ -16,8 +16,15 @@
         
         <label for="name" class="form-label">Nave</label>
         <input type="text" name="name" class="form-control">
+
     </div>
-    <button type="submit" class="btn btn-primary">Añadir nave</button>
+    <label for="piloto_id" class="form-label">Piloto de la nave</label>
+    <select name="piloto_id" class="form-select">
+        @foreach ($pilotos as $piloto)
+            <option value="{{$piloto->id}}">{{$piloto->name}}</option>
+        @endforeach
+    </select>
+    <button type="submit" class="btn btn-primary mt-4">Añadir nave</button>
 
     </form>
     <div>

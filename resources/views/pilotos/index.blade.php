@@ -41,10 +41,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <form action="{{route('piloto.destroy',['piloto'=>$piloto->id])}}">
+        <form action="{{route('piloto.destroy',['piloto'=>$piloto->id])}}" method="POST">
             @method('DELETE')
             @csrf
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
     </div>
     </div>

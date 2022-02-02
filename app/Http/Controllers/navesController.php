@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\nave;
+use App\Models\piloto;
 
 class navesController extends Controller
 {
@@ -11,6 +12,7 @@ class navesController extends Controller
 
         $nave=new nave;
         $nave->name = $request->name;
+        $nave->piloto_id=$request->piloto_id;
         $nave->save();
 
         return redirect()->route('naves')->with('success','Nave creada correctamente');
@@ -18,7 +20,8 @@ class navesController extends Controller
 
     public function index(){
         $naves = nave::all();
-        return view('naves.index', ['naves'=>$naves]);
+        $pilotos = piloto::all();
+        return view('naves.index', ['naves'=>$naves,'pilotos'=>$pilotos]);
     }
     public function show($id){
         $nave = nave::find($id);
@@ -33,9 +36,15 @@ class navesController extends Controller
     }
     public function destroy($id){
         $nave = nave::find($id);
-        $nave->delete();
+        /*$nave->pilotos()->each(function($piloto){
+            $piloto->delete();
+        });
+        $nave->delete();*/
         /*return view('naves.index', ['naves'=>$naves]);*/
         return redirect()->route('naves')->with('success','Nave eliminada correctamente');
     }
 
 }
+
+
+
